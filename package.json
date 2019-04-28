@@ -1,0 +1,22 @@
+{
+  "name": "zotclass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrismar303/zotclass.git"
+  },
+  "author": "Christian Martinez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrismar303/zotclass/issues"
+  },
+  "homepage": "https://github.com/chrismar303/zotclass#readme",
+  "dependencies": {
+    "python-shell": "^1.0.7"
+  }
+}
