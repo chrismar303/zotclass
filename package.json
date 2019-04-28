@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/chrismar303/zotclass#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
     "python-shell": "^1.0.7"
   }
 }
