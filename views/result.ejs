@@ -1,0 +1,17 @@
+<% include partials/header.ejs %>
+<div class="jumbotron jumbotron-fluid">
+
+
+<div class="container">
+    <h1>Course Code</h1>
+    <h2>Status: </h2>
+    <form action="/addclass" method="POST">
+        <h4>Register for Notifications</h4>
+        <div class="form-group">
+            <label>email: <input class="form-control" type="email" name="email" placeholder="youremail@domain"></label>
+        </div>
+        <button class="btn btn-success btn-lg" type="button" name="button">Add Class</button>
+    </form>
+</div>
+</div>
+<% include partials/footer.ejs %>
