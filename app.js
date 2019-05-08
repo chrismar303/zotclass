@@ -16,12 +16,12 @@ app.get('/', function(req, res) {
 // class search
 app.post('/course_info', function(req, res) {
     const course_code = req.body.course_code
-    scan_class(course_code,res); // scans and loads 'result.ejs'
+    scan_class(course_code,res); // scans and loads 'course_info.ejs'
 });
 
 // TODO: '/addclass' route
 app.post('/addclass', function(req, res) {
-
+    res.send('<h1>Add Class</h1>')
 });
 
 // setup app to listen for routes
