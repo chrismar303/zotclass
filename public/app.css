@@ -8,3 +8,13 @@ body {
     color: blue;
     text-align: center;
 }
+
+.course-code-open {
+    text-align: center;
+    color: green
+}
+
+.course-code-closed {
+    text-align: center;
+    color: red
+}
