@@ -11,12 +11,12 @@
     <h5><%= course_info.location %></h5>
 
     <hr>
-    <form action="/addclass" method="POST">
+    <form action="/class/new" method="POST">
         <h4>Register for Notifications</h4>
         <div class="form-group">
-            <label>email: <input class="form-control" type="email" name="email" placeholder="youremail@domain"></label>
+            <label>email: <input class="form-control" type="email" required name="email" placeholder="youremail@domain"></label>
         </div>
-        <button class="btn btn-success btn-lg" type="button" name="button">Add Class</button>
+        <button class="btn btn-success btn-lg" type="submit" name="code" value=<%=course_info.code%>>Add Class</button>
     </form>
 </div>
 </div>
