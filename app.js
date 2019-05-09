@@ -17,7 +17,11 @@ const dbinfo = {
 }
 // Setup Email configuration
 const transporter = nodemailer.createTransport(config.getTransporter());
-const mailOptions = config.getMailOptions();
+const mailOptions = {
+    from: config.getDomain(),
+    subject: 'ZotClass Alert!',
+    text: 'Your Course is now Available!'
+};
 
 // configuration
 app.use(express.static('public'));
@@ -78,7 +82,7 @@ function addClass(user, dbinfo) {
 //  send email
 function sendEmailNotification(mailOptions) {
     transporter.sendMail(mailOptions, function(err, info) {
-        if(err) console.log('Email Failed to be Sent\n' + err);
+        if(err) console.log(`Email Failed to be Sent: ${err}`);
         else console.log(`sent: ${info}`);
     });
 }
