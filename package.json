@@ -21,6 +21,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "mongodb": "^3.2.3",
+    "nodemailer": "^6.1.1",
     "python-shell": "^1.0.7"
   }
 }

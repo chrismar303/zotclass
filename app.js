@@ -5,6 +5,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoClient = require('mongodb').MongoClient;
 const config = require('./config');
+const nodemailer = require('nodemailer');
 
 // localhost port
 const port = 3000;
@@ -14,6 +15,9 @@ const dbinfo = {
     url: config.getDBConnectionURL(),
     collection: config.getCollectionName()
 }
+// Setup Email configuration
+const transporter = nodemailer.createTransport(config.getTransporter());
+const mailOptions = config.getMailOptions();
 
 // configuration
 app.use(express.static('public'));
@@ -68,5 +72,13 @@ function addClass(user, dbinfo) {
         const options = { upsert: true };
         db.collection(dbinfo.collection).updateOne(query, update, options);
         dbref.close();
+    });
+}
+
+//  send email
+function sendEmailNotification(mailOptions) {
+    transporter.sendMail(mailOptions, function(err, info) {
+        if(err) console.log('Email Failed to be Sent\n' + err);
+        else console.log(`sent: ${info}`);
     });
 }
