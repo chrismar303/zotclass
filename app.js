@@ -1,20 +1,21 @@
 // module imports
-const {PythonShell} = require('python-shell');
-const express = require('express');
+import {PythonShell} from 'python-shell';
+import express from 'express';
+import bodyParser from 'body-parser';
+import {config} from './config';
+import nodemailer from 'nodemailer';
 const app = express();
-const bodyParser = require('body-parser');
 const mongoClient = require('mongodb').MongoClient;
-const config = require('./config');
-const nodemailer = require('nodemailer');
 
 // localhost port
 const port = 3000;
 // Atlas cloud URL
 const dbinfo = {
-    name: config.getDBName(),
-    url: config.getDBConnectionURL(),
+    name: config.getDBname(),
+    url: config.getConnectionURL(),
     collection: config.getCollectionName()
-}
+};
+
 // Setup Email configuration
 const transporter = nodemailer.createTransport(config.getTransporter());
 const mailOptions = {
@@ -54,7 +55,11 @@ app.listen(port, () => console.log(`listening on port: ${port}`));
 // parse schedule of classes
 function scanClass(course_code, res) {
     PythonShell.run("scan_class.py", {args: [course_code]}, function(err, results) {
-        if(err) throw err;
+        if(err) { // INVALID COURSE CODE
+            console.log(err);
+            res.redirect('/');
+            return;
+        }
         const data = results[0].replace(/[']/g, "\""); // remove '' from keys in object
         const course_info = JSON.parse(data);
         res.set('course_code', [course_info.code]);
