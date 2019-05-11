@@ -1,18 +1,16 @@
 <% include partials/header.ejs %>
-<div class='container'>
-    <div class='jumbotron'>
-        <h1 class='display-4'>ZotClass!</h1>
-        <p class='lead'>
-            Enter Your Course Code and receive notifications when it becomes open
-        </p>
-        <hr class='my-4'>
+<div class='jumbotron'>
+    <h1 class='display-4'>ZotClass!</h1>
+    <p class='lead'>
+        Enter Your Course Code and receive notifications when it becomes open
+    </p>
+    <hr class='my-4'>
 
-        <form action="/class" method="POST">
-            <div class='form-group'>
-                <label>Couse Code: <input id='class-code' class='form-control' required type='number' name='course_code' placeholder='i.e. 12345'></label>
-            </div>
-            <button id='search-btn' class='btn btn-primary' type='submit'>submit</button>
-        </form>
-    </div>
+    <form action="/class" method="POST">
+        <div class='form-group'>
+            <label>Couse Code: <input id='class-code' class='form-control' required type='number' name='course_code' placeholder='i.e. 12345'></label>
+        </div>
+        <button id='search-btn' class='btn btn-primary' type='submit'>submit</button>
+    </form>
 </div>
 <% include partials/footer.ejs %>

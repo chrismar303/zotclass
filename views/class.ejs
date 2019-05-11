@@ -1,8 +1,5 @@
 <% include partials/header.ejs %>
 <div class="jumbotron jumbotron-fluid">
-
-<div class="container">
-
     <h1 class=<%=course_info.status === 'OPEN' ? 'course-code-open' : 'course-code-closed'%>><%= course_info.status %></h1>
     <h2><%= course_info.title %></h2>
     <h4><%= course_info.instructor %></h4>
@@ -18,6 +15,5 @@
         </div>
         <button class="btn btn-success btn-lg" type="submit" name="code" value=<%=course_info.code%>>Add Class</button>
     </form>
-</div>
 </div>
 <% include partials/footer.ejs %>
