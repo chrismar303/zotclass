@@ -2,8 +2,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {config} from './config';
-import {scanClass, addClass, sendEmailNotification} from './Utilities.js';
-import nodemailer from 'nodemailer';
+import {scanClass, addClass, sendAlert} from './Utilities.js';
 const app = express();
 
 // localhost port
@@ -12,11 +11,12 @@ const port = 3000;
 const dbinfo = {
     name: config.getDBname(),
     url: config.getConnectionURL(),
-    collection: config.getCollectionName()
+    userCollection: config.getCollectionName(),
+    courseCodeCollection: config.getCourseCodeCollection()
 };
 
 // Setup Email configuration
-const transporter = nodemailer.createTransport(config.getTransporter());
+const transporter =  config.createTransport();
 const mailOptions = {
     from: config.getDomain(),
     subject: 'ZotClass Alert!',
@@ -48,3 +48,8 @@ app.post('/class/new', function(req, res) {
 
 // setup app to listen for routes
 app.listen(port, () => console.log(`listening on port: ${port}`));
+
+// TODO call every hour
+function update() {
+    sendAlert(config.getDomain(), transporter, config.getCourseCodeCollection());
+}
